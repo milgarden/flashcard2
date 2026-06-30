@@ -124,7 +124,7 @@
                 const allRows = parseCSV(text);
                 const rawData = allRows.slice(1).filter(r => r.length >= 2 && r[0].trim());
                 const learnedWords = JSON.parse(localStorage.getItem('learnedWords') || '[]');
-                dataRows = rawData.filter(row => !learnedWords.includes(row[1].trim()));
+                dataRows = rawData.filter(row => !learnedWords.includes(row[1].trim())).reverse();
                 startBtn.style.display = dataRows.length > 0 ? 'block' : 'none';
                 contentEl.innerText = dataRows.length > 0 ? `${categorySelect.selectedOptions[0].text}\n全 ${dataRows.length} 問` : "未習得なし";
                 updateStats();
